@@ -1,0 +1,18 @@
+.loadingComponentContainer {
+  display: flex;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingComponentImg {
+  width: 20%;
+  border-radius: 50%;
+  z-index: 3;
+  background-color: var(--background-white-color);
+}

@@ -1,0 +1,83 @@
+.newFeedNoti {
+  position: relative;
+  width: inherit;
+}
+
+.newFeedNotiItems {
+  padding-bottom: 50px;
+  /* min-height: calc(100% - 50px - 30px); */
+}
+
+.newFeedNotiItem {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 12px 8px 0 8px;
+  position: relative;
+  border-radius: 5px;
+  padding: 4px 0 4px 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.newFeedNotiItem:hover {
+  background-color: var(--background-gray-color);
+}
+
+.newFeedNotiItemImg {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.newFeedNotiItemText {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 0 16px;
+  width: 70%;
+}
+
+.newFeedNotiItemDesc {
+  width: 100%;
+  overflow: hidden;
+}
+
+.notRead .newFeedNotiItemDesc {
+  color: var(--main-color);
+}
+
+.newFeedNotiItemNew {
+  background-color: var(--main-color);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 5px);
+  right: 20px;
+}
+
+.newFeedNotiButton {
+  text-align: center;
+  padding: 8px 0;
+  background-color: var(--background-main-color);
+  width: inherit;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+
+.newFeedNotiButtonItem {
+  margin: 0 12px;
+}
+
+.newFeedNotiButtonItem.deleteButton {
+  background-color: var(--red-color);
+  color: var(--white-color);
+}

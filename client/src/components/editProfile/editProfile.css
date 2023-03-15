@@ -1,0 +1,129 @@
+.editProfileContainer {
+  position: fixed;
+  width: 60vw;
+  height: 90vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  background-color: var(--white-color);
+  color: var(--text-color);
+  border-radius: 5px;
+  box-shadow: var(--popup-shadow);
+  overflow-y: scroll;
+  padding: 20px;
+}
+
+.editProfileTop {
+  width: 100%;
+  position: relative;
+  text-align: center;
+}
+
+.editProfileTitle {
+  font-size: 24px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.editProfileCancel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.editProfileHr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+  margin: 12px 0;
+}
+
+.editProfileContent {
+  width: 100%;
+}
+
+.editProfilePartsTitle {
+  font-weight: 700;
+  color: var(--main-color);
+}
+
+.editProfileTextContainer {
+  width: 100%;
+  display: flex;
+  margin: 12px 0;
+}
+
+.editProfileTextTitle {
+  width: 20%;
+}
+
+.editProfileText {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 14px;
+  vertical-align: baseline;
+  font-weight: 400;
+  line-height: 1.29;
+  letter-spacing: 0.16px;
+  border-radius: 5px;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+  border: none;
+  border-bottom: var(--border-gray);
+  background-color: var(--background-white-color);
+  transition: background-color 70ms cubic-bezier(0.2, 0, 0.38, 0.9),
+    outline 70ms cubic-bezier(0.2, 0, 0.38, 0.9);
+}
+
+.editProfileImgContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.editProfileImg {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+
+.editProfileImgButton {
+  background-color: var(--main-color);
+  height: fit-content;
+  color: var(--white-color);
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editProfileCover {
+  margin-top: 24px;
+  width: 60%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.submitUpdateProfile {
+  display: flex;
+}
+
+.updateProfile {
+  width: 100%;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  background-color: var(--success-color);
+  font-weight: 500;
+  margin-right: 20px;
+  cursor: pointer;
+  color: var(--white-color);
+}

@@ -1,0 +1,49 @@
+.commentFormContainer {
+  display: flex;
+  width: 100%;
+  padding: 20px 0 0 12px;
+}
+
+.commentFormProfileImg {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 16px;
+  object-fit: cover;
+}
+
+.commentFormInputContainer {
+  flex: 1;
+  position: relative;
+}
+
+.commentFormInput {
+  width: 100%;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 4px 44px 4px 12px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in,
+    background-color 100ms ease-in;
+  /* border: 2px solid #eaeef0; */
+  border: none;
+  /* color: rgb(14, 14, 16); */
+  background-color: var(--background-white-color);
+  display: block;
+}
+
+.commentFormInput:focus {
+  outline: none;
+}
+
+.inputIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-25%, 50%);
+  cursor: pointer;
+}
+
+.inputIconItem {
+  margin-left: 4px;
+}

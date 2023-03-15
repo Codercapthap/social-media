@@ -1,0 +1,70 @@
+.rightbarFollowings {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.rightbarFollowing {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 20px 0 0;
+  cursor: pointer;
+}
+
+.rightbarFollowingImg {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.rightbarFollowingName {
+  text-align: center;
+}
+
+.rightbarFollowingButton {
+  display: flex;
+}
+
+.normalFriendButton {
+  margin: 30px 0 10px 0;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+}
+
+.declineButton {
+  margin: 30px 0 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.rightbarFollowButton:focus {
+  outline: none;
+}
+
+.blockButton {
+  background-color: var(--red-color);
+  color: var(--white-color);
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.rightbarInfo {
+  margin-bottom: 30px;
+}
+
+.rightbarInfoItem {
+  margin-bottom: 10px;
+}
+
+.rightbarInfoKey {
+  font-weight: 500;
+  margin-right: 15px;
+}
+
+.rightbarInfoValue {
+  font-weight: 300;
+}

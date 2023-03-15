@@ -1,0 +1,27 @@
+.conversationSearchContainer {
+  position: relative;
+}
+
+.ConversationSearchItem {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.conversationSearchContainer:hover {
+  background-color: var(--background-white-color);
+}
+
+.ConversationSearchItemImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.ConversationSearchItemName {
+  font-weight: 500;
+}

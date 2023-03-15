@@ -1,0 +1,115 @@
+{
+  "General": {
+    "like": "Like",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "update": "Update",
+    "delete": "Delete",
+    "loading": "Loading...",
+    "error": "Something went wrong"
+  },
+  "Comment": {
+    "delete": "Are you sure you want to delete this comment",
+    "reply": "Reply",
+    "replies": "replies",
+    "read": "Read",
+    "write": "Write comment...",
+    "readMore": "Read More Comments"
+  },
+  "Post": {
+    "thinkingQuestion": "What are you thinking",
+    "photos": "Photos",
+    "confirmDelete": "Are you sure you want to delete this post?",
+    "peopleLiked": "people liked it",
+    "comments": "comments",
+    "share": "Share"
+  },
+  "Profile": {
+    "updateTitle": "Update profile information",
+    "basicInfo": "Basic information",
+    "userInfo": "User information",
+    "profileName": "Profile Name",
+    "desc": "Description",
+    "address": "Address",
+    "birth": "Date of birth",
+    "avatar": "Avatar",
+    "cover": "Cover Picture",
+    "change": "Change",
+    "confirmDisable": "Are you sure you want to disable this user?",
+    "enableUser": "Enable this user",
+    "disableUser": "Disable this user",
+    "friend": "Friends"
+  },
+  "Friend": {
+    "decline": "Decline",
+    "accept": "Accept",
+    "requestTitle": "List of request sent",
+    "receiveTitle": "List of request received",
+    "cancel": "Cancel request",
+    "acceptRequest": "Accept request",
+    "declineRequest": "Decline request",
+    "unfriend": "Unfriend"
+  },
+  "Rightbar": {
+    "and": "and",
+    "otherFriends": "other friends",
+    "have": "have",
+    "todayBirth": "a birthday today",
+    "onlineFriend": "Online Friends"
+  },
+  "Notification": {
+    "nothing": "There is nothing here",
+    "markReadAll": "Mark as readed all",
+    "deleteAll": "Delete all",
+    "postStatus": "has posted new status",
+    "postComment": "has posted new comment",
+    "acceptFriend": "has accepted your friend invitation"
+  },
+  "Sidebar": {
+    "feed": "Feed",
+    "chat": "Chat",
+    "videos": "Videos",
+    "groups": "Groups",
+    "jobs": "Jobs",
+    "events": "Event",
+    "more": "More"
+  },
+  "Readmore": {
+    "readMore": "...Read more",
+    "showLess": " Show less"
+  },
+  "Topbar": {
+    "searchFor": "Search for...",
+    "homepage": "Homepage",
+    "profilePage": "Profile page",
+    "updateProfile": "Update Profile",
+    "changeLanguage": "Change Language",
+    "changeTheme": "Change Theme",
+    "logout": "Log out",
+    "dark": "Dark",
+    "light": "Light"
+  },
+  "Login": {
+    "slogun": "Connect with friends and the world around you on Bouken",
+    "login": "Log in",
+    "forgot": "Forgot password?",
+    "createAccount": "Create a new account",
+    "password": "Password",
+    "username": "Username",
+    "confirmPassword": "Confirm password",
+    "signup": "Sign Up",
+    "alreadyHaveAccount": "Already have an account?",
+    "error": "Username or password wrong"
+  },
+  "Messenger": {
+    "searchFriend": "Search for friends",
+    "loadMore": "Load more messages",
+    "openConversationMessage": "Open a conversation to start a chat",
+    "startChat": "Start a chat"
+  },
+  "404": {
+    "pageNotFound": "Page Not Found",
+    "message": "Are you lost, Traveler? Don't worry, Paimon is here to guide you back",
+    "backHome": "Back to home"
+  }
+}

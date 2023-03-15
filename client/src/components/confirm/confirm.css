@@ -1,0 +1,31 @@
+.confirmContainer {
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmForm {
+  padding: 24px;
+  z-index: 4;
+  background-color: var(--white-color);
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+}
+
+.deleteButton {
+  color: var(--white-color);
+  margin-right: 4px;
+  background-color: var(--red-color);
+}
+
+.buttonDiv {
+  margin-top: 8px;
+  width: 100%;
+  text-align: right;
+}
