@@ -1,0 +1,52 @@
+.messageNotiItem {
+  display: flex;
+  justify-content: flex-start;
+  margin: 12px 8px 0 8px;
+  position: relative;
+  border-radius: 5px;
+  padding: 4px 0 4px 8px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.messageNotiItem:hover {
+  background-color: var(--background-gray-color);
+}
+
+.messageNotiItemImg {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.messageNotiItemText {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 0 16px;
+  width: 70%;
+}
+.messageNotiItemName {
+  font-weight: 500;
+}
+
+.messageNotiItemDesc {
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notRead .messageNotiItemDesc {
+  color: var(--main-color);
+}
+
+.messageNotiItemNew {
+  background-color: var(--main-color);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 5px);
+  right: 20px;
+}

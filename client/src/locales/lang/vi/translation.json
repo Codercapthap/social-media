@@ -1,0 +1,116 @@
+{
+  "General": {
+    "like": "Thích",
+    "confirm": "Xác nhận",
+    "cancel": "Hủy bỏ",
+    "update": "Cập nhật",
+    "delete": "Xoá",
+    "loading": "Đang tải...",
+    "error": "Có lỗi xảy ra"
+  },
+  "Comment": {
+    "delete": "Bạn có chắc bạn muốn xóa bình luận này không",
+    "reply": "Trả lời",
+    "replies": "trả lời",
+    "read": "Đọc",
+    "write": "Viết bình luận...",
+    "readMore": "Đọc thêm các comment khác"
+  },
+  "Post": {
+    "thinkingQuestion": "Bạn đang nghĩ gì vậy ",
+    "photos": "Ảnh",
+    "confirmDelete": "Bạn có chắc muốn xóa post này không?",
+    "peopleLiked": "người đã thích",
+    "comments": "bình luận",
+    "share": "Đăng"
+  },
+  "Profile": {
+    "updateTitle": "Cập nhật thông tin cá nhân",
+    "basicInfo": "Thông tin cơ bản",
+    "userInfo": "Thông tin người dùng",
+    "profileName": "Tên tài khoản",
+    "desc": "Giới thiệu",
+    "address": "Địa chỉ",
+    "birth": "Ngày sinh",
+    "avatar": "Ảnh đại diện",
+    "cover": "Ảnh bìa",
+    "change": "Thay đổi",
+    "confirmDisable": "Bạn có muốn vô hiệu hóa người dùng này không?",
+    "enableUser": "Hủy vô hiệu hóa người dùng này",
+    "disableUser": "Vô hiệu hóa người dùng này",
+    "friend": "Bạn bè"
+  },
+  "Friend": {
+    "decline": "Từ chối",
+    "accept": "Chấp nhận",
+    "requestTitle": "Danh sách lời mời đã gửi",
+    "receiveTitle": "Danh sách lời mời đã nhận",
+    "cancel": "Hủy bỏ lời mời",
+    "add": "Thêm bạn",
+    "acceptRequest": "Chấp nhận lời mời",
+    "declineRequest": "Từ chối lời mời",
+    "unfriend": "Hủy kết bạn"
+  },
+  "Rightbar": {
+    "and": "và",
+    "otherFriends": "người bạn khác",
+    "have": "có",
+    "todayBirth": "sinh nhật hôm nay",
+    "onlineFriend": "Bạn bè đang online"
+  },
+  "Notification": {
+    "nothing": "Không có gì ở đây cả",
+    "markReadAll": "Đánh dấu tất cả đã đọc",
+    "deleteAll": "Xóa tất cả",
+    "postStatus": "đã đăng trạng thái mới",
+    "postComment": "đã đăng bình luận mới",
+    "acceptFriend": "đã chấp nhận lời mời kết bạn của bạn"
+  },
+  "Sidebar": {
+    "feed": "Bảng tin",
+    "chat": "Trò chuyện",
+    "videos": "Xem phim",
+    "groups": "Nhóm",
+    "jobs": "Công việc",
+    "events": "Sự kiện",
+    "more": "Nhiều hơn"
+  },
+  "Readmore": {
+    "readMore": "...Xem thêm",
+    "showLess": " Thu gọn"
+  },
+  "Topbar": {
+    "searchFor": "Tìm kiếm...",
+    "homepage": "Trang chủ",
+    "profilePage": "Trang cá nhân",
+    "updateProfile": "Cập nhật thông tin",
+    "changeLanguage": "Thay đổi ngôn ngữ",
+    "changeTheme": "Thay đổi màu chủ đề",
+    "logout": "Đăng xuất",
+    "dark": "Tối",
+    "light": "Sáng"
+  },
+  "Login": {
+    "slogun": "Bouken giúp bạn kết nối và chia sẻ với mọi người trong cuộc sống của bạn",
+    "login": "Đăng nhập",
+    "forgot": "Quên mật khẩu?",
+    "createAccount": "Tạo tài khoản mới",
+    "password": "Mật khẩu",
+    "username": "Tên tài khoản",
+    "confirmPassword": "Nhập lại mật khẩu",
+    "signup": "Đăng ký",
+    "alreadyHaveAccount": "Bạn đã có tài khoản?",
+    "error": "Tài khoản hoặc mật khẩu không đúng"
+  },
+  "Messenger": {
+    "searchFriend": "Tìm bạn bè",
+    "loadMore": "Tải thêm tin nhắn",
+    "openConversationMessage": "Mở một đoạn hội thoại để bắt đầu nhắn tin",
+    "startChat": "Bắt đầu nhắn tin"
+  },
+  "404": {
+    "pageNotFound": "Trang không tồn tại",
+    "message": "Bạn bị lạc ư, Nhà lữ hành? Đừng lo lắng, Paimon ở đây để đưa bạn trở lại",
+    "backHome": "Trở về trang chủ"
+  }
+}

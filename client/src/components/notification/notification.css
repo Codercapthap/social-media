@@ -1,0 +1,26 @@
+.notiContainer {
+  width: 375px;
+  height: 90vh;
+  background-color: var(--white-color);
+  position: absolute;
+  right: 4px;
+  border-radius: 5px;
+  box-shadow: var(--popup-shadow);
+  padding-top: 12px;
+  overflow-y: scroll;
+  cursor: default;
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--background-white-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--text-color);
+}

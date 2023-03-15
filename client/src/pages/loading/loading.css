@@ -1,0 +1,17 @@
+.loadingContainer {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-gray-color);
+}
+
+.loadingImg {
+  width: 30%;
+  border-radius: 50%;
+  background-color: var(--background-white-color);
+}

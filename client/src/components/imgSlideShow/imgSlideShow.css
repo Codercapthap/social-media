@@ -1,0 +1,56 @@
+.ImgsSlideShowContainer {
+  position: fixed;
+  top: 0;
+  /* right: 0;
+  bottom: 0;
+  left: 0; */
+  width: 100vw;
+  background-color: black;
+  z-index: 2;
+  height: calc(100vh - 50px);
+  margin-top: 50px;
+}
+
+.cancelSlideShow {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  cursor: pointer;
+  font-size: 36px !important;
+  color: var(--white-color);
+}
+
+.SlideShowContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.previousImg {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgShowing {
+  max-width: 80%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nextImg {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slideShowButton {
+  cursor: pointer;
+  color: white;
+  font-size: 48px !important;
+}

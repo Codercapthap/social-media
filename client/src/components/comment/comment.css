@@ -1,0 +1,114 @@
+.commentContainer {
+  width: 100%;
+  display: flex;
+  padding: 0 0 8px 12px;
+  margin-top: 8px;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.commentLeft {
+  margin-right: 16px;
+}
+
+.commentLeftProfileImg {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.commentRight {
+  flex: 1;
+  /* color: black; */
+}
+
+.commentRightMessageContainer {
+  position: relative;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 8px 12px 8px 12px;
+  transition: box-shadow 100ms ease-in, border 100ms ease-in,
+    background-color 100ms ease-in;
+  /* border: 2px solid #eaeef0; */
+  /* border: var(--border-gray); */
+  /* color: rgb(14, 14, 16); */
+  background-color: var(--background-white-color);
+  /* background: #eaeef0; */
+}
+
+.commentRightMessageName {
+  font-weight: 500;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.commentRightMessageText {
+  padding-right: 44px;
+}
+
+.commentRightMessageAction {
+  margin: 4px 0 0 12px;
+  display: flex;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.commentRightMessageActionItem {
+  margin-right: 12px;
+}
+
+.commentRightMessageActionItem.active {
+  /* color: #5890ff; */
+  color: var(--main-color);
+  font-weight: 800;
+}
+
+.commentRightTime {
+  font-weight: 300;
+}
+
+.commentRightMessageLike {
+  position: absolute;
+  top: 100%;
+  transform: translateY(-50%);
+  right: 8px;
+  display: flex;
+  align-items: center;
+  background-color: var(--white-color);
+  padding: 2px 8px;
+  border-radius: 16px;
+}
+
+.commentRightMessageLikeIcon {
+  width: 24px;
+  margin-right: 4px;
+}
+
+.commentRightMessageLikeNumber {
+}
+
+.repCommentForm {
+  width: 100%;
+}
+
+.inputEditIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-25%, 50%);
+  cursor: pointer;
+}
+
+.inputEditIconItem {
+  margin-left: 4px;
+}
+
+.readMore {
+  margin-left: 16px;
+  font-weight: 500;
+  color: var(--main-color);
+  margin-top: 8px;
+  cursor: pointer;
+}

@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --background-main-color: #81a4cd;
+  --background-white-color: #e6e6e9;
+  --background-gray-color: #b8b8b8;
+  --background-black-color: rgb(3, 7, 30);
+  --background-opacity-color: rgba(3, 7, 30, 0.5);
+  --red-color: #d00000;
+  --success-color: #00db0e;
+  --white-color: #fff;
+  --white-hover: #e6e6e9;
+  --main-color: #81a4cd;
+  --text-color: #333;
+  --text-gray-color: #5d5b57;
+  --shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  --error-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.35),
+    inset 0 3px 3px rgba(0, 0, 0, 0.35);
+  --popup-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1px 1px #000,
+    -1px -1px #000, 1px -1px #000, -1px 1px #000;
+  --normal-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  --border-gray: 1px solid #b8b8b8;
+  --border-white: 3px solid white;
+  --speed: 500ms;
+}
+
+[data-theme="dark"] {
+  --background-main-color: #635985;
+  --background-white-color: #393053;
+  --background-gray-color: #18122b;
+  --background-black-color: rgb(252, 248, 225);
+  --background-opacity-color: rgba(252, 248, 225, 0.5);
+  --white-color: #000;
+  --white-hover: rgb(25, 25, 22);
+  --main-color: rgb(126, 91, 50);
+  --text-color: rgb(204, 204, 204);
+  --text-gray-color: rgb(193, 164, 168);
+  --shadow: 0px 0px 16px -8px #fff;
+  --error-shadow: 0px 0px 7px 0px rgba(255, 255, 255, 0.35),
+    inset 0 3px 3px rgba(255, 255, 255, 0.35);
+  --popup-shadow: #635985 0px 5px 15px;
+  --text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff,
+    -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+  --normal-shadow: #635985 0px 7px 29px 0px;
+  --border-gray: 1px solid rgb(71, 71, 71);
+  --border-white: 3px solid black;
+  --speed: 500ms;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+input,
+textarea,
+p {
+  /* background-color: var(--white-color); */
+  color: var(--text-color);
+}
+
+textarea {
+  resize: none;
+}
+
+span,
+svg {
+  color: var(--text-color);
+}
+
+body {
+  background-color: var(--white-color);
+  color: var(--text-color);
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 8px 12px;
+  font-weight: 500;
+  background-color: var(--background-white-color);
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.errMessage {
+  color: var(--red-color);
+}

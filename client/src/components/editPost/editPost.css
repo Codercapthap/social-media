@@ -1,0 +1,119 @@
+.editPostWrapper {
+  padding: 16px;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.editPostTop {
+  height: calc(60vh - 128px);
+  overflow-y: scroll;
+}
+
+.editPostProfileImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.editPostInput {
+  resize: none;
+  border: none;
+  width: 100%;
+  padding: 12px;
+}
+
+.editPostInput:focus {
+  outline: none;
+}
+
+.editPostHr {
+  margin: 20px;
+}
+
+.editPostBottom {
+  margin-top: 24px;
+}
+
+.editPostOptions {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.editPostOption {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  border: var(--border-gray);
+  justify-content: center;
+  border-radius: 5px;
+  padding: 4px 0;
+  margin-bottom: 12px;
+}
+
+.editPostIcon {
+  font-size: 18px;
+  margin-right: 3px;
+}
+
+.editPostOptionText {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.editPostButton {
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: var(--success-color);
+  font-weight: 500;
+  margin-right: 20px;
+  width: 100%;
+  cursor: pointer;
+  color: var(--white-color);
+}
+
+.editPostImgsContainer {
+  padding: 0 10px 10px 10px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.editPostImgContainer {
+  width: 40%;
+  height: 140px;
+  display: flex;
+  position: relative;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  padding: 14px;
+  border: 1px solid black;
+}
+
+.editPostImg {
+  /* width: 40%; */
+  /* height: 120px; */
+  width: 80%;
+  flex: 1 1;
+  /* height: 100%; */
+  margin: 6px 6px;
+  border-radius: 10px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.editPostCancelImg {
+  position: absolute;
+  top: 0px;
+  padding-left: px;
+  /* left: 0; */
+  right: 0;
+  cursor: pointer;
+}

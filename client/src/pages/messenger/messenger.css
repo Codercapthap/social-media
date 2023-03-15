@@ -1,0 +1,144 @@
+.messenger {
+  height: calc(100vh - 70px);
+  display: flex;
+}
+
+.chatMenu {
+  flex: 3.5;
+}
+
+.chatMenuInput {
+  width: 90%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: var(--border-gray);
+}
+
+.chatMenuInput:focus {
+  outline: none;
+}
+
+.chatBox {
+  border-left: var(--border-gray);
+
+  border-right: var(--border-gray);
+  flex: 5.5;
+}
+
+.chatBoxWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.chatBoxTop {
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 10px;
+}
+
+.loadMoreMessage {
+  width: 100%;
+  text-align: center;
+  background-color: var(--background-white-color);
+  padding: 8px 0;
+  color: var(--main-color);
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.scrollDownButton {
+  position: fixed;
+  top: 70%;
+  right: 50%;
+  transform: translate(100%, 50%);
+  border-radius: 50%;
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--popup-shadow);
+  border: none;
+  cursor: pointer;
+}
+
+.chatBoxBottom {
+  margin-top: 5px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chatMessageInput {
+  width: 80%;
+  max-height: 100px;
+  padding: 10px;
+}
+
+.chatSubmitButton {
+  padding: 20px;
+  margin-right: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--success-color);
+  color: var(--white-color);
+}
+
+.chatOnline {
+  flex: 3;
+}
+
+.chatMenuWrapper,
+.chatBoxWrapper,
+.chatOnlineWrapper {
+  padding: 10px;
+  height: 100%;
+}
+
+.noConversationText {
+  /* position: absolute;
+  top: 10%; */
+  font-size: 32px;
+  color: var(--text-color);
+  text-align: center;
+  cursor: default;
+}
+
+.noConversationContainer {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.noConversationButton {
+  padding: 12px 32px;
+  background-color: var(--main-color);
+  font-size: 16px;
+  margin-top: 8px;
+  cursor: pointer;
+  border: none;
+  color: var(--white-color);
+}
+
+.conversationDiv {
+  position: relative;
+}
+
+.conversationNotRead {
+  background-color: var(--main-color);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 5px);
+  right: 20%;
+}

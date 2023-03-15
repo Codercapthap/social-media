@@ -1,0 +1,196 @@
+.post {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  margin: 30px 0;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}
+
+.postWrapper {
+  padding: 10px;
+  width: 100%;
+}
+
+.postTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.postTopLeft {
+  display: flex;
+  align-items: center;
+}
+
+.postProfileImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.postUsername {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 10px;
+}
+
+.postDate {
+  font-size: 12px;
+}
+
+.postOptionButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.postOptions {
+  display: flex;
+  background-color: var(--white-color);
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  box-shadow: var(--popup-shadow);
+  width: 100px;
+  align-items: center;
+  flex-wrap: wrap;
+  position: absolute;
+  right: 20px;
+  padding: 8px;
+}
+
+.postOptionsItem {
+  font-size: 14px;
+  width: 100%;
+  text-align: left;
+  font-weight: 500;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+.postOptionsItem:hover {
+  background-color: var(--white-hover);
+}
+
+.postOptionsItemDelete {
+  color: var(--red-color);
+}
+
+.postCenter {
+  margin: 12px 0 20px 0;
+}
+
+.postText {
+  height: 12px;
+}
+
+.postImgsContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.postImgContainer {
+  width: 50%;
+  height: 140px;
+  display: flex;
+  border-radius: 10px;
+  margin: 9px 0;
+  position: relative;
+}
+
+.postImg {
+  /* margin-top: 20px;
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain; */
+  /* width: 80%; */
+  flex: 1 1;
+  border-radius: 10px;
+  -o-object-fit: contain;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.postImgContainer.oneImage {
+  width: unset;
+  height: 280px;
+}
+
+.remainImg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--background-opacity-color);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white-color);
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: var(--text-shadow);
+  margin: 0 18px;
+  cursor: pointer;
+}
+
+.postBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.postBottomLeft {
+  display: flex;
+  align-items: center;
+}
+
+.likeIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.postLikeCounter {
+  font-size: 15px;
+}
+
+.postCommentText {
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.editPost {
+  border-radius: 5px;
+  background-color: var(--white-color);
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  box-shadow: var(--popup-shadow);
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: 30vw;
+  transform: translate(-50%, -50%);
+}
+
+.cancelEditPost {
+  position: absolute;
+  scale: 1.5;
+  top: 0;
+  right: 0;
+  transform: translate(30%, -30%);
+  cursor: pointer;
+}
+
+.postHr {
+  border: 0;
+  height: 1px;
+  background-color: var(--white-hover);
+}
