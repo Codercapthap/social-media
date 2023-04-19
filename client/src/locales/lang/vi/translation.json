@@ -6,7 +6,7 @@
     "update": "Cập nhật",
     "delete": "Xoá",
     "loading": "Đang tải...",
-    "error": "Có lỗi xảy ra"
+    "error": "Có lỗi xảy ra, vui lòng thử lại sau"
   },
   "Comment": {
     "delete": "Bạn có chắc bạn muốn xóa bình luận này không",
@@ -39,6 +39,14 @@
     "enableUser": "Hủy vô hiệu hóa người dùng này",
     "disableUser": "Vô hiệu hóa người dùng này",
     "friend": "Bạn bè"
+  },
+  "Password": {
+    "changePasswordTitle": "Cập nhật mật khẩu",
+    "oldPassword": "Mật khẩu cũ",
+    "newPassword": "Mật khẩu mới",
+    "confirmPassword": "Xác nhận mật khẩu mới",
+    "passwordChanged": "Mật khẩu thay đổi thành công",
+    "passwordNotMatch": "Mật khẩu và xác nhận mật khẩu không khớp"
   },
   "Friend": {
     "decline": "Từ chối",
@@ -84,6 +92,7 @@
     "homepage": "Trang chủ",
     "profilePage": "Trang cá nhân",
     "updateProfile": "Cập nhật thông tin",
+    "changePassword": "Đổi mật khẩu",
     "changeLanguage": "Thay đổi ngôn ngữ",
     "changeTheme": "Thay đổi màu chủ đề",
     "logout": "Đăng xuất",

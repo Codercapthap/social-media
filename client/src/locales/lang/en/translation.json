@@ -6,7 +6,7 @@
     "update": "Update",
     "delete": "Delete",
     "loading": "Loading...",
-    "error": "Something went wrong"
+    "error": "Something went wrong, please try again later"
   },
   "Comment": {
     "delete": "Are you sure you want to delete this comment",
@@ -39,6 +39,14 @@
     "enableUser": "Enable this user",
     "disableUser": "Disable this user",
     "friend": "Friends"
+  },
+  "Password": {
+    "changePasswordTitle": "Change Password",
+    "oldPassword": "Old Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm new password",
+    "passwordChanged": "Password changed",
+    "passwordNotMatch": "Password and Confirm Password not match"
   },
   "Friend": {
     "decline": "Decline",
@@ -83,6 +91,7 @@
     "homepage": "Homepage",
     "profilePage": "Profile page",
     "updateProfile": "Update Profile",
+    "changePassword": "Change Password",
     "changeLanguage": "Change Language",
     "changeTheme": "Change Theme",
     "logout": "Log out",

@@ -10,6 +10,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import Notification from "../notification/Notification";
 import EditProfile from "../editProfile/EditProfile";
+import ChangePassword from "../changePassword/changePassword";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import fullLogo from "../../assets/full_logo.png";
@@ -39,6 +40,7 @@ function Topbar() {
     return state.FriendRequest.friendRequestsUser;
   });
   const [toggleEditProfile, setToggleEditProfile] = useState(false);
+  const [toggleChangePassword, setToggleChangePassword] = useState(false);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const navigate = useNavigate();
 
@@ -281,6 +283,15 @@ function Topbar() {
                     <button
                       className="userNavItem"
                       onClick={() => {
+                        setToggleChangePassword(!toggleChangePassword);
+                      }}
+                    >
+                      {t("Topbar.changePassword")}
+                    </button>
+
+                    <button
+                      className="userNavItem"
+                      onClick={() => {
                         setActiveMenu("language");
                       }}
                     >
@@ -413,6 +424,45 @@ function Topbar() {
                 toggleEditProfile={toggleEditProfile}
                 setToggleEditProfile={setToggleEditProfile}
               ></EditProfile>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <AnimatePresence
+          initial={false}
+          mode="wait"
+          onExitComplete={() => {
+            return null;
+          }}
+        >
+          {toggleChangePassword && (
+            <motion.div
+              initial={{
+                opacity: 0,
+                scale: 0,
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0,
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+              }}
+              transition={{ duration: 0.5 }}
+            >
+              <ChangePassword
+                toggleChangePassword={toggleChangePassword}
+                setToggleChangePassword={setToggleChangePassword}
+              ></ChangePassword>
             </motion.div>
           )}
         </AnimatePresence>
