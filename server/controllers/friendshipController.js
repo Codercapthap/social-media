@@ -110,7 +110,7 @@ class friendshipController {
    * @returns {Promise<string>}
    */
   async takeBackFriendRequest(req, res) {
-    if (req.locals.currentUser.uid !== req.params.id) {
+    if (res.locals.currentUser.uid !== req.params.id) {
       try {
         const requester = await User.findOne({
           uid: res.locals.currentUser.uid,

@@ -56,7 +56,8 @@
     "cancel": "Cancel request",
     "acceptRequest": "Accept request",
     "declineRequest": "Decline request",
-    "unfriend": "Unfriend"
+    "unfriend": "Unfriend",
+    "add": "Add friend"
   },
   "Rightbar": {
     "and": "and",

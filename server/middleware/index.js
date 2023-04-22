@@ -11,9 +11,9 @@ class Middleware {
         res.locals.currentUser = decodeValue;
         return next();
       }
-      return res.json({ message: "Unauthorize" });
+      return res.status(401).json({ message: "Unauthorize" });
     } catch (err) {
-      return res.json({ message: "Internal Error" });
+      return res.status(500).json({ message: "Internal Error" });
     }
   }
 }
