@@ -10,6 +10,9 @@ router.post("/", postController.createPost);
 // !OK
 router.put("/:id", postController.updatePost);
 
+// delete video
+router.delete("/video", postController.deleteVideo);
+
 // delete post
 // !OK
 router.delete("/:id", postController.deletePost);

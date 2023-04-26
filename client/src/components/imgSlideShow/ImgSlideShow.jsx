@@ -59,7 +59,17 @@ export default function ImgSlideShow({ imgs, position, handleToggle }) {
               onClick={handlePrevious}
             ></ArrowBackIosIcon>
           </div>
-          <img src={imgs[currentPosition]} alt="" className="imgShowing" />
+          {imgs[currentPosition].split(".").pop() !== "mp4" ? (
+            <img src={imgs[currentPosition]} alt="" className="imgShowing" />
+          ) : (
+            <video
+              src={"http://localhost:3001" + imgs[currentPosition]}
+              alt=""
+              controls
+              className="imgShowing"
+            ></video>
+          )}
+
           <div className="nextImg">
             <ArrowForwardIosIcon
               className="slideShowButton"

@@ -1,6 +1,48 @@
 import http from "../helpers/http";
+import axios from "axios";
+import { setContentType } from "../helpers/http";
 
 export const Post = {
+  /**
+   * TODO: upload
+   * @param {blob} file
+   * @param {string} filename
+   * @returns {Promise<Object>}
+   */
+  async upload(file, filename) {
+    try {
+      const formData = new FormData();
+      formData.append("name", filename);
+      formData.append("file", file);
+
+      // const res = axios.post("http://localhost:3001/api/upload", formData, {
+      //   headers: { "Content-Type": "multipart/form-data" },
+      // });
+      setContentType("multipart/form-data");
+      const res = await http.post("/upload", formData);
+      setContentType("application/json");
+      console.log(res.data);
+      return res.data;
+    } catch (e) {
+      return e.message;
+    }
+  },
+
+  /**
+   * TODO: delete video
+   * @param {blob} file
+   * @param {string} filename
+   * @returns {Promise<Object>}
+   */
+  async deleteVideo(filePath) {
+    try {
+      const res = await http.delete("post/video/?path=" + filePath);
+      return res.data;
+    } catch (e) {
+      return e.message;
+    }
+  },
+
   /**
    * TODO: create post
    * @param {string} userId
@@ -44,7 +86,6 @@ export const Post = {
    * @returns {Promise<Object>}
    */
   async edit(postId, imgs, desc) {
-    console.log(imgs);
     try {
       if (desc) {
         console.log("desc");
@@ -54,7 +95,6 @@ export const Post = {
         });
         return res.data;
       } else {
-        console.log("img");
         const res = await http.put("post/" + postId, {
           imgs,
         });

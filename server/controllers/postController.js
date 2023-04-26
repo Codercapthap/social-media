@@ -3,6 +3,8 @@ import Comment from "../models/Comment.js";
 import Notification from "../models/Notification.js";
 import User from "../models/User.js";
 import { getFriends } from "../utils/index.js";
+import path from "path";
+import fs from "fs";
 
 class postController {
   /**
@@ -171,6 +173,28 @@ class postController {
         res.status(200).json(post);
       }
     } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+
+  /**
+   * *req.body.filePath
+   * @param {*} req
+   * @param {*} res
+   */
+  async deleteVideo(req, res) {
+    try {
+      const __dirname = process.env.DIRNAME;
+      fs.unlink(path.join(__dirname, `public/${req.query.path}`), (err) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+
+        res.status(200).json("file has been deleted");
+      });
+    } catch (err) {
+      console.log(err);
       res.status(500).json(err);
     }
   }

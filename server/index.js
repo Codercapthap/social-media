@@ -5,25 +5,27 @@ import morgan from "morgan";
 import cors from "cors";
 import path from "path";
 import connectDB from "./database/db.js";
-import { fileURLToPath } from "url";
+// import { fileURLToPath } from "url";
 import { route } from "./routes/index.js";
 import "./websocket/index.js";
 import middleware from "./middleware/index.js";
+import multer from "multer";
 
 //* variables and configs
 const app = express();
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config();
+const __dirname = process.env.DIRNAME;
 
 connectDB();
 //* middlewares
 app.use("/images", express.static(path.join(__dirname, "public/images")));
+app.use("/videos", express.static(path.join(__dirname, "public/videos")));
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
 // app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
-app.use(middleware.decodeToken);
 
 //* Export API
 app.get("/", (req, res, next) => {
@@ -33,6 +35,26 @@ app.get("/", (req, res, next) => {
     author: "Nguyen Bach Khiem, Nguyen An Vi, Dam Thanh Tien",
   });
 });
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/videos");
+  },
+  filename: (req, file, cb) => {
+    cb(null, req.body.name);
+  },
+  onError: function (err, next) {
+    console.log("error", err);
+    next(err);
+  },
+});
+
+const upload = multer({ storage });
+app.post("/api/upload", upload.single("file"), (req, res) => {
+  res.status(200).json(`/videos/${req.body.name}`);
+});
+
+app.use(middleware.decodeToken);
 //* main api
 route(app);
 //Catch Error
@@ -53,26 +75,6 @@ app.use((err, req, res, next) => {
     },
   });
 });
-
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "public/images");
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, req.body.name);
-//   },
-// });
-
-// const upload = multer({ storage });
-// app.post("/api/upload", (req, res) => {
-//   try {
-//     console.log(req.body);
-
-//     return res.status(200).json("File uploaded success");
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
 
 const PORT = process.env.PORT || 9000;
 //* main listening port

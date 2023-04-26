@@ -16,20 +16,32 @@ function Share() {
   });
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const desc = useRef();
-  const [files, setFiles] = useState([]);
-  const [previewFiles, setPreviewFiles] = useState([]);
+  const [imgFiles, setImgFiles] = useState([]);
+  const [videoFiles, setVideoFiles] = useState([]);
+  const [previewImgs, setPreviewImgs] = useState([]);
+  const [previewVideos, setPreviewVideos] = useState([]);
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
 
   const handleChange = (e) => {
     const promise = Array.from(e.target.files).map(async (file) => {
-      setFiles((prev) => {
-        return [...prev, file];
-      });
-      const previewFile = await fileToDataURL(file);
-      setPreviewFiles((prev) => {
-        return [...prev, { file, previewFile }];
-      });
+      if (file.type === "image/png" || file.type === "image/jpeg") {
+        setImgFiles((prev) => {
+          return [...prev, file];
+        });
+        const previewFile = await fileToDataURL(file);
+        setPreviewImgs((prev) => {
+          return [...prev, { file, previewFile }];
+        });
+      } else if (file.type === "video/mp4") {
+        setVideoFiles((prev) => {
+          return [...prev, file];
+        });
+        const source = URL.createObjectURL(file);
+        setPreviewVideos((prev) => {
+          return [...prev, { file, source }];
+        });
+      }
     });
     Promise.all(promise);
   };
@@ -50,26 +62,66 @@ function Share() {
     setLoading(true);
     let newPost = await Post.createPost(desc.current.value, []);
     let urls = [];
-    Promise.all(
-      files.map(async (file) => {
+    Promise.all([
+      ...imgFiles.map(async (file) => {
         const fileName = Date.now() + file.name;
         const uploaded = await Firebase.postFile(
           file,
           currentUser.uid + "/post/" + newPost._id + "/" + fileName
         );
         urls.push(uploaded);
-      })
-    ).then(async () => {
+      }),
+      ...videoFiles.map(async (file) => {
+        const fileName = Date.now() + file.name;
+        const uploaded = await Post.upload(file, fileName);
+        urls.push(uploaded);
+      }),
+    ]).then(async () => {
       newPost = await Post.edit(newPost._id, urls);
       socket.emit("createPost", {
         userId: currentUser.uid,
         postId: newPost._id,
       });
       window.location.reload();
-      setFiles([]);
+      setImgFiles([]);
+      setPreviewVideos([]);
       setLoading(false);
     });
   };
+  // [
+  //   {
+  //     name: "create",
+  //     value: [
+  //       {
+  //         name: "create",
+  //         price: 1000,
+  //         quantity: 100,
+  //       },
+  //     ],
+  //   },
+  // ];
+  // const getOptions = () => {
+  //   const options = [];
+  //   const optionElements = document.querySelectorAll("[data-groupId]");
+  //   options = optionElements.map((optionElement, optionIndex) => {
+  //     const name = document.getElementById(`opt-grp-${optionIndex}`).value;
+  //     const values = [];
+  //     const valueElements = document.querySelectorAll("[data-values-groupid]");
+  //     values = valueElements.map((valueElement, index) => {
+  //       const valueName = document.querySelectorAll(
+  //         `opt-grp-${optionIndex}-name-${index}`
+  //       ).value;
+  //       const valuePrice = document.querySelectorAll(
+  //         `opt-grp-${optionIndex}-price-${index}`
+  //       ).value;
+  //       const valueStock = document.querySelectorAll(
+  //         `opt-grp-${optionIndex}-stock-${index}`
+  //       ).value;
+  //       return { name: valueName, price: valuePrice, stock: valueStock };
+  //     });
+  //     return { name: name, values: values };
+  //   });
+  // };
 
   return (
     <>
@@ -102,7 +154,7 @@ function Share() {
 
           <div className="shareImgsContainer">
             <AnimatePresence>
-              {previewFiles.map((previewFile) => {
+              {previewImgs.map((previewFile) => {
                 return (
                   <motion.div
                     className="shareImgContainer"
@@ -119,12 +171,45 @@ function Share() {
                     <CancelIcon
                       className="shareCancelImg"
                       onClick={() => {
-                        setFiles((prev) => {
+                        setImgFiles((prev) => {
                           return prev.filter((item) => {
                             return item !== previewFile.file;
                           });
                         });
-                        setPreviewFiles((prev) => {
+                        setPreviewImgs((prev) => {
+                          return prev.filter((item) => {
+                            return item.file !== previewFile.file;
+                          });
+                        });
+                      }}
+                    ></CancelIcon>
+                  </motion.div>
+                );
+              })}
+              {previewVideos.map((previewFile) => {
+                return (
+                  <motion.div
+                    className="shareImgContainer"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <video
+                      className="shareImg"
+                      src={previewFile.source}
+                      controls
+                      alt=""
+                    />
+                    <CancelIcon
+                      className="shareCancelImg"
+                      onClick={() => {
+                        setVideoFiles((prev) => {
+                          return prev.filter((item) => {
+                            return item !== previewFile.file;
+                          });
+                        });
+                        setPreviewVideos((prev) => {
                           return prev.filter((item) => {
                             return item.file !== previewFile.file;
                           });
@@ -149,7 +234,7 @@ function Share() {
                   type="file"
                   id="file"
                   multiple
-                  accept=".png,.jpeg,.jpg"
+                  accept=".png,.jpeg,.jpg,.mp4"
                   onChange={handleChange}
                 />
               </label>

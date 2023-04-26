@@ -18,7 +18,7 @@
   },
   "Post": {
     "thinkingQuestion": "What are you thinking",
-    "photos": "Photos",
+    "photos": "Photos/Videos",
     "confirmDelete": "Are you sure you want to delete this post?",
     "peopleLiked": "people liked it",
     "comments": "comments",

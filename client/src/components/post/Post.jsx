@@ -65,12 +65,15 @@ export default function Post({ post }) {
     try {
       setLoading(true);
       Promise.all(
-        post.imgs.map(async (img) => {
-          await deleteFileFromFirestore(img);
+        post.imgs.map(async (file) => {
+          if (file.split(".").pop() !== "mp4")
+            await deleteFileFromFirestore(file);
+          else await PostService.deleteVideo(file);
         })
       ).then(async () => {
         await PostService.deletePost(post._id);
         setLoading(false);
+        window.location.reload();
       });
     } catch (err) {
       console.log(err);
@@ -230,15 +233,41 @@ export default function Post({ post }) {
                     post.imgs.length === 1 && "oneImage"
                   }`}
                 >
-                  <img
-                    className="postImg"
-                    src={img}
-                    alt=""
-                    onClick={() => {
-                      setToggleSlideShow(true);
-                      setPosition(index);
-                    }}
-                  />
+                  {img.split(".").pop() !== "mp4" ? (
+                    <img
+                      className="postImg"
+                      src={img}
+                      alt=""
+                      onClick={() => {
+                        setToggleSlideShow(true);
+                        setPosition(index);
+                      }}
+                    />
+                  ) : (
+                    <>
+                      <video
+                        className="postImg"
+                        alt=""
+                        onClick={() => {
+                          setToggleSlideShow(true);
+                          setPosition(index);
+                        }}
+                        src={"http://localhost:3001" + img}
+                      ></video>
+                      <a
+                        onClick={() => {
+                          setToggleSlideShow(true);
+                          setPosition(index);
+                        }}
+                        id="play-video"
+                        class="video-play-button"
+                        href="#"
+                      >
+                        <span></span>
+                      </a>
+                    </>
+                  )}
+
                   {index === 3 && (
                     <div
                       className="remainImg"

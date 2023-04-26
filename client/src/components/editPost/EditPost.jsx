@@ -18,11 +18,39 @@ export default function EditPost({ post, toggleEditPost }) {
   const [loading, setLoading] = useState(false);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [desc, setDesc] = useState(post.desc);
-  const [files, setFiles] = useState(post.imgs);
-  const [previewFiles, setPreviewFiles] = useState(() => {
-    return post.imgs.map((img) => {
-      return { file: img, previewFile: img };
+  // const [files, setFiles] = useState(post.imgs);
+  const [imgFiles, setImgFiles] = useState(() => {
+    return post.imgs.filter((img) => {
+      return img.split(".").pop() !== "mp4";
     });
+  });
+  // img.split(".").pop() !== "mp4";
+  const [videoFiles, setVideoFiles] = useState(() => {
+    return post.imgs.filter((img) => {
+      return img.split(".").pop() === "mp4";
+    });
+  });
+  // const [previewImgs, setPreviewImgs] = useState([]);
+  // const [previewVideos, setPreviewVideos] = useState([]);
+  const [previewImgs, setPreviewImgs] = useState(() => {
+    return post.imgs
+      .map((img) => {
+        if (img.split(".").pop() !== "mp4")
+          return { file: img, previewFile: img };
+      })
+      .filter((item) => {
+        return item !== undefined;
+      });
+  });
+  const [previewVideos, setPreviewVideos] = useState(() => {
+    return post.imgs
+      .map((video) => {
+        if (video.split(".").pop() === "mp4")
+          return { file: video, previewFile: video };
+      })
+      .filter((item) => {
+        return item !== undefined;
+      });
   });
   const [heightDefault, setHeightDefault] = useState("auto");
   const input = useRef();
@@ -41,13 +69,23 @@ export default function EditPost({ post, toggleEditPost }) {
 
   const handleChange = (e) => {
     const promise = Array.from(e.target.files).map(async (file) => {
-      setFiles((prev) => {
-        return [...prev, file];
-      });
-      const previewFile = await fileToDataURL(file);
-      setPreviewFiles((prev) => {
-        return [...prev, { file, previewFile }];
-      });
+      if (file.type === "image/png" || file.type === "image/jpeg") {
+        setImgFiles((prev) => {
+          return [...prev, file];
+        });
+        const previewFile = await fileToDataURL(file);
+        setPreviewImgs((prev) => {
+          return [...prev, { file, previewFile }];
+        });
+      } else if (file.type === "video/mp4") {
+        setVideoFiles((prev) => {
+          return [...prev, file];
+        });
+        const source = URL.createObjectURL(file);
+        setPreviewVideos((prev) => {
+          return [...prev, { file, source }];
+        });
+      }
     });
     Promise.all(promise);
   };
@@ -58,31 +96,50 @@ export default function EditPost({ post, toggleEditPost }) {
     e.preventDefault();
     setLoading(true);
     let urls = [];
-    const postFiltered = post.imgs.filter((img) => {
-      if (files.includes(img)) {
+    const imgsFiltered = post.imgs.filter((img) => {
+      if (imgFiles.includes(img)) {
         return false;
       } else {
         return true;
       }
     });
-    postFiltered.map(async (postFilter) => {
-      await deleteFileFromFirestore(postFilter);
+    imgsFiltered.map(async (imgFiltered) => {
+      await deleteFileFromFirestore(imgFiltered);
     });
-    Promise.all(
-      files.map(async (editFile) => {
-        if (typeof editFile !== "string") {
-          const fileName = Date.now() + editFile.name;
+    const videosFiltered = post.imgs.filter((video) => {
+      if (videoFiles.includes(video)) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+    videosFiltered.map(async (videoFiltered) => {
+      await Post.deleteVideo(videoFiltered);
+    });
+    Promise.all([
+      ...imgFiles.map(async (editImgFile) => {
+        if (typeof editImgFile !== "string") {
+          const fileName = Date.now() + editImgFile.name;
 
           const fileUploaded = await Firebase.postFile(
-            editFile,
+            editImgFile,
             currentUser.uid + "/post/" + post._id + "/" + fileName
           );
           urls.push(fileUploaded);
         } else {
-          urls.push(editFile);
+          urls.push(editImgFile);
         }
-      })
-    ).then(async () => {
+      }),
+      ...videoFiles.map(async (editVideoFile) => {
+        if (typeof editVideoFile !== "string") {
+          const fileName = Date.now() + editVideoFile.name;
+          const uploaded = await Post.upload(editVideoFile, fileName);
+          urls.push(uploaded);
+        } else {
+          urls.push(editVideoFile);
+        }
+      }),
+    ]).then(async () => {
       await Post.edit(post._id, urls, desc);
       setLoading(false);
       window.location.reload();
@@ -131,37 +188,72 @@ export default function EditPost({ post, toggleEditPost }) {
                 return null;
               }}
             >
-              {previewFiles.map((previewFile) => {
-                return (
-                  <motion.div
-                    className="editPostImgContainer"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <img
-                      className="editPostImg"
-                      src={previewFile.previewFile}
-                      alt=""
-                    />
-                    <CancelIcon
-                      className="editPostCancelImg"
-                      onClick={() => {
-                        setFiles((prev) => {
-                          return prev.filter((item) => {
-                            return item !== previewFile.file;
+              {previewImgs.map((previewImg) => {
+                if (previewImg)
+                  return (
+                    <motion.div
+                      className="editPostImgContainer"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <img
+                        className="editPostImg"
+                        src={previewImg.previewFile}
+                        alt=""
+                      />
+                      <CancelIcon
+                        className="editPostCancelImg"
+                        onClick={() => {
+                          setImgFiles((prev) => {
+                            return prev.filter((item) => {
+                              return item !== previewImg.file;
+                            });
                           });
-                        });
-                        setPreviewFiles((prev) => {
-                          return prev.filter((item) => {
-                            return item.file !== previewFile.file;
+                          setPreviewImgs((prev) => {
+                            return prev.filter((item) => {
+                              return item.file !== previewImg.file;
+                            });
                           });
-                        });
-                      }}
-                    ></CancelIcon>
-                  </motion.div>
-                );
+                        }}
+                      ></CancelIcon>
+                    </motion.div>
+                  );
+              })}
+              {previewVideos.map((previewVideo) => {
+                if (previewVideo)
+                  return (
+                    <motion.div
+                      className="editPostImgContainer"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <video
+                        className="editPostImg"
+                        src={"http://localhost:3001" + previewVideo.previewFile}
+                        alt=""
+                        controls
+                      />
+                      <CancelIcon
+                        className="editPostCancelImg"
+                        onClick={() => {
+                          setVideoFiles((prev) => {
+                            return prev.filter((item) => {
+                              return item !== previewVideo.file;
+                            });
+                          });
+                          setPreviewVideos((prev) => {
+                            return prev.filter((item) => {
+                              return item.file !== previewVideo.file;
+                            });
+                          });
+                        }}
+                      ></CancelIcon>
+                    </motion.div>
+                  );
               })}
             </AnimatePresence>
           </div>
@@ -178,7 +270,7 @@ export default function EditPost({ post, toggleEditPost }) {
                 style={{ display: "none" }}
                 type="file"
                 id="editFile"
-                accept=".png,.jpeg,.jpg"
+                accept=".png,.jpeg,.jpg,.mp4"
                 onChange={handleChange}
               />
             </label>
