@@ -109,7 +109,8 @@
     "confirmPassword": "Nhập lại mật khẩu",
     "signup": "Đăng ký",
     "alreadyHaveAccount": "Bạn đã có tài khoản?",
-    "error": "Tài khoản hoặc mật khẩu không đúng"
+    "error": "Tài khoản hoặc mật khẩu không đúng",
+    "tooManyTryError": "Bạn đã nhập sai quá nhiều lần, vui lòng thử lại sau"
   },
   "Messenger": {
     "searchFriend": "Tìm bạn bè",

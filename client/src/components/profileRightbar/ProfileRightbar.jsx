@@ -8,12 +8,15 @@ import { User } from "../../services/User.service";
 import { useDispatch } from "react-redux";
 import "./profileRightbar.css";
 import { useTranslation } from "react-i18next";
+import { AnimatePresence } from "framer-motion";
+import Confirm from "../confirm/Confirm";
 
 export default function ProfileRightbar({ user }) {
   const [isFriend, setIsFriend] = useState("notFriend");
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [isRequester, setIsRequester] = useState(false);
   const [isReceiver, setIsReceiver] = useState(false);
+  const [confirming, setConfirming] = useState(false);
   const [friends, setFriends] = useState([]);
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => {
@@ -72,16 +75,6 @@ export default function ProfileRightbar({ user }) {
   const handleDisableUser = async () => {
     await User.disableUser(user.uid);
     setToggleAdminEnableButton(true);
-  };
-
-  const toggleFormDisable = () => {
-    dispatch({
-      type: "START_CONFIRM",
-      payload: {
-        confirmHandle: handleDisableUser,
-        message: t("Profile.confirmDisable"),
-      },
-    });
   };
 
   const handleEnableUser = async () => {
@@ -143,6 +136,23 @@ export default function ProfileRightbar({ user }) {
 
   return (
     <>
+      <AnimatePresence
+        initial={false}
+        mode="wait"
+        onExitComplete={() => {
+          return null;
+        }}
+      >
+        {confirming && (
+          <Confirm
+            confirmHandle={handleDisableUser}
+            toggleHandle={() => {
+              setConfirming(false);
+            }}
+            message={t("Profile.confirmDisable")}
+          ></Confirm>
+        )}
+      </AnimatePresence>
       {user.uid !== currentUser.uid && (
         <div className="rightbarFollowingButton">
           <FriendButton></FriendButton>
@@ -169,7 +179,12 @@ export default function ProfileRightbar({ user }) {
             {t("Profile.enableUser")}
           </button>
         ) : (
-          <button className="blockButton button" onClick={toggleFormDisable}>
+          <button
+            className="blockButton button"
+            onClick={() => {
+              setConfirming(true);
+            }}
+          >
             {t("Profile.disableUser")}
           </button>
         ))}

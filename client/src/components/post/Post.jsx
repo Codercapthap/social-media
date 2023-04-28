@@ -232,6 +232,7 @@ export default function Post({ post }) {
                   className={`postImgContainer ${
                     post.imgs.length === 1 && "oneImage"
                   }`}
+                  key={img}
                 >
                   {img.split(".").pop() !== "mp4" ? (
                     <img
@@ -252,7 +253,7 @@ export default function Post({ post }) {
                           setToggleSlideShow(true);
                           setPosition(index);
                         }}
-                        src={"http://localhost:3001" + img}
+                        src={"http://127.0.0.1:3001" + img}
                       ></video>
                       <a
                         onClick={() => {

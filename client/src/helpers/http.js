@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 
 // const defaultOption = {};
 var instance = axios.create({
-  baseURL: "http://localhost:3001/api/",
+  baseURL: "http://127.0.0.1:3001/api/",
   headers: {
     common: {
       Authorization: "Bearer ",
@@ -22,6 +22,6 @@ export const setContentType = (contentType) => {
   instance.defaults.headers.Accept = contentType;
 };
 
-export const socket = io("http://localhost:8900");
+export const socket = io("http://127.0.0.1:8900");
 
 export default instance;

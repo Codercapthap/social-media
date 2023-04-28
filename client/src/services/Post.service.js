@@ -21,7 +21,6 @@ export const Post = {
       setContentType("multipart/form-data");
       const res = await http.post("/upload", formData);
       setContentType("application/json");
-      console.log(res.data);
       return res.data;
     } catch (e) {
       return e.message;
@@ -70,10 +69,9 @@ export const Post = {
   async getPost(postId) {
     try {
       const res = await http.get("post/" + postId);
-      return res.data;
+      if (res.status === 200) return res.data;
     } catch (err) {
       console.log(err);
-      return err;
     }
   },
 
@@ -88,7 +86,6 @@ export const Post = {
   async edit(postId, imgs, desc) {
     try {
       if (desc) {
-        console.log("desc");
         const res = await http.put("post/" + postId, {
           desc,
           imgs,
@@ -129,7 +126,6 @@ export const Post = {
   async getTimelinePost(number) {
     try {
       const res = await http.get(`post/timeline/${number}`);
-      console.log(res.data);
       return res.data;
     } catch (err) {
       console.log(err);

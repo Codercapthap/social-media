@@ -109,7 +109,8 @@
     "confirmPassword": "Confirm password",
     "signup": "Sign Up",
     "alreadyHaveAccount": "Already have an account?",
-    "error": "Username or password wrong"
+    "error": "Username or password wrong",
+    "tooManyTryError": "Many failed login attempts, please try again later"
   },
   "Messenger": {
     "searchFriend": "Search for friends",

@@ -21,6 +21,7 @@ export default function NewFeedNotification() {
   const notifications = useSelector((state) => {
     return state.Notifications.notifications;
   });
+  console.log(notifications);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -41,11 +42,14 @@ export default function NewFeedNotification() {
   };
 
   const loadFunc = () => {
+    // if (number - notifications.length < 10) {
+    //   console.log("here");
+    //   setNotiToRender(notifications.slice(0, notifications.length));
+    // } else
     setNotiToRender(notifications.slice(0, number));
     setNumber((prev) => prev + 10);
     if (number >= notifications.length) setHasMore(false);
   };
-
   return (
     <>
       <motion.div
@@ -82,6 +86,7 @@ export default function NewFeedNotification() {
                 </div>
               }
               hasMore={hasMore}
+              useWindow={false}
             >
               {notiToRender.map((notification) => {
                 return (

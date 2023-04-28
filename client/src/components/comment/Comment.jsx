@@ -13,6 +13,7 @@ import ReadMore from "../readMore/ReadMore";
 import { useTranslation } from "react-i18next";
 import Confirm from "../confirm/Confirm";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function Comment({
   comment,
@@ -186,11 +187,15 @@ function Comment({
         </AnimatePresence>
         {!toggleEdit && (
           <div className="commentLeft">
-            <img
-              src={user.photoURL ? user.photoURL : PF + "person/noAvatar.webp"}
-              alt=""
-              className="commentLeftProfileImg"
-            />
+            <Link to={`/profile/${user.uid}`}>
+              <img
+                src={
+                  user.photoURL ? user.photoURL : PF + "person/noAvatar.webp"
+                }
+                alt=""
+                className="commentLeftProfileImg"
+              />
+            </Link>
           </div>
         )}
         <div className="commentRight">

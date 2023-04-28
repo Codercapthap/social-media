@@ -11,13 +11,13 @@ import { Snackbar, Alert } from "@mui/material";
 export default function ChangePassword({
   toggleChangePassword,
   setToggleChangePassword,
+  onIsPasswordChanged,
 }) {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const { t } = useTranslation();
 
   /**
@@ -30,7 +30,7 @@ export default function ChangePassword({
       await Firebase.reauthenticate(oldPassword);
       await Firebase.changePassword(newPassword, confirmPassword);
       setToggleChangePassword(!toggleChangePassword);
-      setIsSuccess(true);
+      onIsPasswordChanged(true);
     } catch (err) {
       setError(err.message);
     }
@@ -113,19 +113,6 @@ export default function ChangePassword({
           </button>
         </div>
       </form>
-      <Snackbar
-        open={isSuccess}
-        autoHideDuration={6000}
-        onClose={() => setIsSuccess(false)}
-      >
-        <Alert
-          onClose={() => setIsSuccess(false)}
-          severity="success"
-          sx={{ width: "100%" }}
-        >
-          {t("Password.passwordChanged")}
-        </Alert>
-      </Snackbar>
       <Snackbar
         open={Boolean(error.length)}
         autoHideDuration={6000}

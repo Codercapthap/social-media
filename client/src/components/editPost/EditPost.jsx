@@ -233,7 +233,7 @@ export default function EditPost({ post, toggleEditPost }) {
                     >
                       <video
                         className="editPostImg"
-                        src={"http://localhost:3001" + previewVideo.previewFile}
+                        src={"http://127.0.0.1:3001" + previewVideo.previewFile}
                         alt=""
                         controls
                       />

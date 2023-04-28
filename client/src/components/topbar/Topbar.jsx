@@ -17,6 +17,7 @@ import fullLogo from "../../assets/full_logo.png";
 import { useTranslation } from "react-i18next";
 import { CSSTransition } from "react-transition-group";
 import { motion, AnimatePresence } from "framer-motion";
+import { Snackbar, Alert } from "@mui/material";
 
 function Topbar() {
   const [isProfileClicking, setIsProfileClicking] = useState(false);
@@ -26,6 +27,7 @@ function Topbar() {
   const [searchText, setSearchText] = useState("");
   const [activeMenu, setActiveMenu] = useState("main");
   const [menuHeight, setMenuHeight] = useState(null);
+  const [isPasswordChanged, setIsPasswordChanged] = useState(false);
   const { i18n } = useTranslation();
   const currentUser = useSelector((state) => {
     return state.User.currentUser;
@@ -462,11 +464,26 @@ function Topbar() {
               <ChangePassword
                 toggleChangePassword={toggleChangePassword}
                 setToggleChangePassword={setToggleChangePassword}
+                onIsPasswordChanged={setIsPasswordChanged}
               ></ChangePassword>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
+
+      <Snackbar
+        open={isPasswordChanged}
+        autoHideDuration={6000}
+        onClose={() => setIsPasswordChanged(false)}
+      >
+        <Alert
+          onClose={() => setIsPasswordChanged(false)}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          {t("Password.passwordChanged")}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }

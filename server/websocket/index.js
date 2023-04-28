@@ -8,7 +8,7 @@ import Post from "../models/Post.js";
 
 const io = new Server(8900, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: ["http://127.0.0.1:3000", "http://localhost:3000"],
   },
 });
 
