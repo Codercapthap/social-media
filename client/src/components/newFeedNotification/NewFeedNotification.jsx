@@ -46,7 +46,15 @@ export default function NewFeedNotification() {
     //   console.log("here");
     //   setNotiToRender(notifications.slice(0, notifications.length));
     // } else
-    setNotiToRender(notifications.slice(0, number));
+    setNotiToRender(
+      notifications
+        .sort((a, b) => {
+          const aDate = new Date(a.createdAt).getTime();
+          const bDate = new Date(b.createdAt).getTime();
+          return bDate - aDate;
+        })
+        .slice(0, number)
+    );
     setNumber((prev) => prev + 10);
     if (number >= notifications.length) setHasMore(false);
   };
@@ -88,51 +96,64 @@ export default function NewFeedNotification() {
               hasMore={hasMore}
               useWindow={false}
             >
-              {notiToRender.map((notification) => {
-                return (
-                  <Link
-                    to={
-                      notification.post
-                        ? `/post/${notification.post}`
-                        : `/profile/${notification.causer.uid}`
-                    }
-                    className={`newFeedNotiItem ${
-                      notification.isReaded === 0 ? "notRead" : ""
-                    }`}
-                    key={notification._id}
-                    onClick={() => {
-                      handleRead(notification._id);
-                    }}
-                  >
-                    <img
-                      src={
-                        notification.causer.photoURL ||
-                        PF + "person/noAvatar.webp"
+              {console.log(
+                notiToRender.sort((a, b) => {
+                  const aDate = new Date(a.createdAt).getTime();
+                  const bDate = new Date(b.createdAt).getTime();
+                  return bDate - aDate;
+                })
+              )}
+              {notiToRender
+                .sort((a, b) => {
+                  const aDate = new Date(a.createdAt).getTime();
+                  const bDate = new Date(b.createdAt).getTime();
+                  return bDate - aDate;
+                })
+                .map((notification) => {
+                  return (
+                    <Link
+                      to={
+                        notification.post
+                          ? `/post/${notification.post}`
+                          : `/profile/${notification.causer.uid}`
                       }
-                      alt=""
-                      className="newFeedNotiItemImg"
-                    />
-                    <div className="newFeedNotiItemText">
-                      <span className="newFeedNotiItemDesc">
-                        {notification.type === "post"
-                          ? `${notification.causer.displayName} ${t(
-                              "Notification.postStatus"
-                            )}`
-                          : notification.type === "reply"
-                          ? `${notification.causer.displayName} ${t(
-                              "Notification.postComment"
-                            )}`
-                          : `${notification.causer.displayName} ${t(
-                              "Notification.acceptFriend"
-                            )}`}
-                      </span>
-                      {notification.isReaded === 0 && (
-                        <span className="newFeedNotiItemNew"></span>
-                      )}
-                    </div>
-                  </Link>
-                );
-              })}
+                      className={`newFeedNotiItem ${
+                        notification.isReaded === 0 ? "notRead" : ""
+                      }`}
+                      key={notification._id}
+                      onClick={() => {
+                        handleRead(notification._id);
+                      }}
+                    >
+                      <img
+                        src={
+                          notification.causer.photoURL ||
+                          PF + "person/noAvatar.webp"
+                        }
+                        alt=""
+                        className="newFeedNotiItemImg"
+                      />
+                      <div className="newFeedNotiItemText">
+                        <span className="newFeedNotiItemDesc">
+                          {notification.type === "post"
+                            ? `${notification.causer.displayName} ${t(
+                                "Notification.postStatus"
+                              )}`
+                            : notification.type === "reply"
+                            ? `${notification.causer.displayName} ${t(
+                                "Notification.postComment"
+                              )}`
+                            : `${notification.causer.displayName} ${t(
+                                "Notification.acceptFriend"
+                              )}`}
+                        </span>
+                        {notification.isReaded === 0 && (
+                          <span className="newFeedNotiItemNew"></span>
+                        )}
+                      </div>
+                    </Link>
+                  );
+                })}
             </InfiniteScroll>
           )}
         </div>

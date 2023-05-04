@@ -73,8 +73,10 @@ export default function ProfileRightbar({ user }) {
   };
 
   const handleDisableUser = async () => {
-    await User.disableUser(user.uid);
-    setToggleAdminEnableButton(true);
+    if (!user.isAdmin) {
+      await User.disableUser(user.uid);
+      setToggleAdminEnableButton(true);
+    }
   };
 
   const handleEnableUser = async () => {
@@ -172,8 +174,8 @@ export default function ProfileRightbar({ user }) {
           <span className="rightbarInfoValue">{user.address}</span>
         </div>
       </div>
-      {console.log(currentUser.isAdmin)}
       {currentUser.isAdmin &&
+        !user.isAdmin &&
         (toggleAdminEnableButton ? (
           <button className="blockButton button" onClick={handleEnableUser}>
             {t("Profile.enableUser")}

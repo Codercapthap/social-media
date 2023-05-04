@@ -77,7 +77,8 @@ function Share() {
         urls.push(uploaded);
       }),
     ]).then(async () => {
-      newPost = await Post.edit(newPost._id, urls);
+      await Post.edit(newPost._id, urls);
+      await Post.getPost(newPost._id);
       socket.emit("createPost", {
         userId: currentUser.uid,
         postId: newPost._id,

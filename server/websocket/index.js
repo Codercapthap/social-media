@@ -142,6 +142,7 @@ const onConnection = (socket) => {
     const userObject = await User.findOne({ uid: userId });
     const friends = await getFriends(userObject._id);
     const postObject = await Post.findById(postId);
+    console.log(postObject, postId);
     friends.map(async (friend) => {
       const friendObject = await User.findOne({ uid: friend.uid });
       const notification = new Notification({
