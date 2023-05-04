@@ -22,7 +22,11 @@ connectDB();
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use("/videos", express.static(path.join(__dirname, "public/videos")));
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
+  })
+);
 app.use(helmet());
 // app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
