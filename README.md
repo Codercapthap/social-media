@@ -72,13 +72,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 
-<!-- CONTACT -->
-## Contact
-
-* [Email](mailto:kidkaito1412.1@gmail.com) - Akiko Hikamari
-* [Facebook](https://www.facebook.com/AkikoHikamari/) - Nguyễn Khiêm
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 [ReactJS]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [ReactJS-url]: https://react.dev/
