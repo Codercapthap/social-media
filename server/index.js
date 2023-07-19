@@ -5,7 +5,7 @@ import morgan from "morgan";
 import cors from "cors";
 import path from "path";
 import connectDB from "./database/db.js";
-// import { fileURLToPath } from "url";
+import { fileURLToPath } from "url";
 import { route } from "./routes/index.js";
 import "./websocket/index.js";
 import middleware from "./middleware/index.js";
