@@ -13,9 +13,9 @@ import multer from "multer";
 
 //* variables and configs
 const app = express();
-// const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config();
-const __dirname = process.env.DIRNAME;
+// const __dirname = process.env.DIRNAME;
 
 connectDB();
 //* middlewares

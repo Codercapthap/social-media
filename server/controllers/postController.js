@@ -185,7 +185,8 @@ class postController {
    */
   async deleteVideo(req, res) {
     try {
-      const __dirname = process.env.DIRNAME;
+      const __dirname = path.dirname(fileURLToPath(import.meta.url));
+      // const __dirname = process.env.DIRNAME;
       fs.unlink(path.join(__dirname, `public/${req.query.path}`), (err) => {
         if (err) {
           console.error(err);
