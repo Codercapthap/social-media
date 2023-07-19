@@ -253,7 +253,7 @@ export default function Post({ post }) {
                           setToggleSlideShow(true);
                           setPosition(index);
                         }}
-                        src={"http://127.0.0.1:3001" + img}
+                        src={process.env.REACT_APP_API + img}
                       ></video>
                       <a
                         onClick={() => {

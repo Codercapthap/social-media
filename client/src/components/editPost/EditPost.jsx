@@ -233,7 +233,9 @@ export default function EditPost({ post, toggleEditPost }) {
                     >
                       <video
                         className="editPostImg"
-                        src={"http://127.0.0.1:3001" + previewVideo.previewFile}
+                        src={
+                          process.env.REACT_APP_API + previewVideo.previewFile
+                        }
                         alt=""
                         controls
                       />

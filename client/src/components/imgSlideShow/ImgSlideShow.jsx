@@ -63,7 +63,7 @@ export default function ImgSlideShow({ imgs, position, handleToggle }) {
             <img src={imgs[currentPosition]} alt="" className="imgShowing" />
           ) : (
             <video
-              src={"http://127.0.0.1:3001" + imgs[currentPosition]}
+              src={process.env.REACT_APP_API + imgs[currentPosition]}
               alt=""
               controls
               className="imgShowing"
