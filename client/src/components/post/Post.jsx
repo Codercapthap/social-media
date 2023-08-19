@@ -38,7 +38,7 @@ export default function Post({ post }) {
 
   // TODO: get post likes
   useEffect(() => {
-    setIsLiked(post.likes.includes(currentUser.uid));
+    setIsLiked(post.likes.includes(currentUser._id));
   }, [currentUser.uid]);
 
   // TODO: get owner of the post

@@ -3,7 +3,7 @@ import Comment from "../models/Comment.js";
 import Notification from "../models/Notification.js";
 import User from "../models/User.js";
 import { getFriends } from "../utils/index.js";
-import { fileURLToPath } from "url";
+import { __dirname } from "../index.js";
 import path from "path";
 import fs from "fs";
 
@@ -186,7 +186,7 @@ class postController {
    */
   async deleteVideo(req, res) {
     try {
-      const __dirname = path.dirname(fileURLToPath(import.meta.url));
+      // const __dirname = path.dirname(fileURLToPath(import.meta.url));
       // const __dirname = process.env.DIRNAME;
       fs.unlink(path.join(__dirname, `public/${req.query.path}`), (err) => {
         if (err) {

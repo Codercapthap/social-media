@@ -13,7 +13,7 @@ import multer from "multer";
 
 //* variables and configs
 const app = express();
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+export const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config();
 // const __dirname = process.env.DIRNAME;
 
@@ -24,7 +24,8 @@ app.use("/videos", express.static(path.join(__dirname, "public/videos")));
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    // origin: process.env.CLIENT_URL,
+    origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
   })
 );
 app.use(helmet());

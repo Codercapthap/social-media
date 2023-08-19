@@ -20,6 +20,7 @@ export const Post = {
       // });
       setContentType("multipart/form-data");
       const res = await http.post("/upload", formData);
+      console.log(res);
       setContentType("application/json");
       return res.data;
     } catch (e) {

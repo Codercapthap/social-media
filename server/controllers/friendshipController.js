@@ -52,6 +52,7 @@ class friendshipController {
    */
   async getFriends(req, res) {
     try {
+      console.log(req.params.userId);
       const currentUser = await User.findOne({
         uid: req.params.userId,
       });

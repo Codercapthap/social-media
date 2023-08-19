@@ -11,7 +11,8 @@ export const getUserById = async (userId) => {
   // const querySnapshot = await getDocs(q);
   // return querySnapshot.docs[0]?.data();
   try {
-    const user = await User.findOne({ uid: userId }).select("-_id");
+    const user = await User.findOne({ uid: userId });
+    // .select("-_id");
     return user;
   } catch (err) {
     return err;

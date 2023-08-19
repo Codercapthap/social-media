@@ -70,7 +70,7 @@ textarea {
 
 span,
 svg {
-  color: var(--text-color);
+  /* color: var(--text-color); */
 }
 
 body {
