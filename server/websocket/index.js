@@ -9,7 +9,8 @@ import Post from "../models/Post.js";
 const io = new Server(8900, {
   cors: {
     // origin: process.env.CLIENT_URL,
-    origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
+    // origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
+    origin: "*:*",
   },
 });
 
