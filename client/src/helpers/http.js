@@ -22,6 +22,9 @@ export const setContentType = (contentType) => {
   instance.defaults.headers.Accept = contentType;
 };
 
-export const socket = io(process.env.REACT_APP_SOCKET);
+export const socket = io(process.env.REACT_APP_SOCKET, {
+  transports: ["websocket"],
+  withCredentials: true,
+});
 
 export default instance;

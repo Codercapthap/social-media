@@ -39,7 +39,7 @@ app.get("/", (req, res, next) => {
   res.status(200).json({
     name: "Boken social",
     code: "CT501",
-    author: "Nguyen Bach Khiem, Nguyen An Vi, Dam Thanh Tien",
+    author: "Nguyen Bach Khiem",
   });
 });
 

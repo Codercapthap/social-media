@@ -24,7 +24,6 @@ import Loading from "./pages/loading/Loading";
 import NotFound from "./pages/notFound/NotFound";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
-
 function App() {
   const dispatch = useDispatch();
   const currentAuth = useSelector((state) => {

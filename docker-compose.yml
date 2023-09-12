@@ -1,0 +1,60 @@
+version: "3.4"
+
+services:
+  server:
+    image: server
+    build:
+      context: server
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+      MONGO_URL: mongodb://root:example@db:27017/social?authSource=admin&directConnection=true
+    env_file:
+      - server/.env
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 3001:3001
+      - 8900:8900
+    networks:
+      - backend
+      - frontend
+    restart: unless-stopped
+  client:
+    image: client
+    build:
+      context: client
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - frontend
+    restart: unless-stopped
+  db:
+    image: database
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGODB_DATABASE: social
+    restart: always
+    networks:
+      - backend
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh mongodb://root:example@localhost:27017/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  mongo_data:
+networks:
+  backend:
+  frontend:
